@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beautiful UI with Tailwind CSS</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="./index.css" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Klayers</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="./index.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -18,75 +18,102 @@
 
     <div class="container mx-auto py-10">
         <div class="card rounded-lg shadow-lg p-6">
-            <h1 class="card-title text-2xl font-bold mb-4">Search Layers</h1>
+            <h1 class="card-title text-2xl font-bold mb-4">Search Python Layers</h1>
             <div class="flex space-x-4 relative">
-                <div class="w-1/4">
-                    <label for="language"
-                        class="block text-sm font-medium text-gray-400 mb-1">Language/Framework</label>
-                    <div class="relative">
-                        <select
-                            class="w-full px-4 py-2 rounded border border-gray-600 bg-gray-800 text-white dropdown-item">
-                            <option value="" disabled selected>Loading Language/Framework...</option>
-                            <option value="javascript">JavaScript</option>
-                            <option value="python">Python</option>
-                            <!-- Add more options as needed -->
-                        </select>
-                        <div class="loader absolute top-1/2 right-4 transform -translate-y-1/2" id="languageLoader">
-                        </div>
+                <div class="w-1/3">
+                    <label for="library" class="block text-sm font-medium text-gray-400 mb-1">
+                        Version
+                    </label>
+                    <div class="relative mt-2">
+                        <button type="button" onclick="toggleDropdownList(event)"
+                            disabled
+                            class="w-full px-4 py-2 rounded border border-gray-600 bg-gray-800 text-white dropdown-item focus:outline-none focus:ring-2 focus:ring-blue-400 sm:text-sm sm:leading-6 cursor-not-allowed"
+                            aria-haspopup="listbox" aria-expanded="true" aria-labelledby="listbox-label"
+                            data-dropdown="version-list">
+                            <span class="flex items-center">
+                                <span id="selected-version" class="block truncate">Select Version</span>
+                            </span>
+                            <span id="version-state" class="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="lucide lucide-chevron-down">
+                                    <path d="m6 9 6 6 6-6" />
+                                </svg>
+                            </span>
+                        </button>
+
+                        <ul class="hidden absolute z-10 mt-1 max-h-56 w-full overflow-auto border border-gray-600 rounded-md bg-gray-800 text-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 divide-y divide-solid divide-gray-700 focus:outline-none sm:text-sm"
+                            id="version-list" tabindex="-1" role="listbox" aria-labelledby="listbox-label"
+                            aria-activedescendant="listbox-option-3"></ul>
                     </div>
                 </div>
-                <div class="w-1/4">
-                    <label for="library" class="block text-sm font-medium text-gray-400 mb-1"> Version</label>
-                    <div class="relative">
-                        <select
-                            class="w-full px-4 py-2 rounded border border-gray-600 bg-gray-800 text-white dropdown-item">
-                            <option value="" disabled selected>Loading Version...</option>
-                            <option value="1.0">1.0</option>
-                            <option value="2.0">2.0</option>
-                        </select>
-                        <div class="loader absolute top-1/2 right-4 transform -translate-y-1/2" id="versionLoader">
-                        </div>
+                <div class="w-1/3">
+                    <label for="library" class="block text-sm font-medium text-gray-400 mb-1">
+                        Region
+                    </label>
+                    <div class="relative mt-2">
+                        <button type="button" onclick="toggleDropdownList(event)"
+                            disabled
+                            class="w-full px-4 py-2 rounded cursor-not-allowed border border-gray-600 bg-gray-800 text-white dropdown-item focus:outline-none focus:ring-2 focus:ring-blue-400 sm:text-sm sm:leading-6"
+                            aria-haspopup="listbox" aria-expanded="true" aria-labelledby="listbox-label"
+                            data-dropdown="region-list">
+                            <span class="flex items-center">
+                                <span id="selected-region" class="block truncate">Select Region</span>
+                            </span>
+                            <span id="region-state" class="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="lucide lucide-chevron-down">
+                                    <path d="m6 9 6 6 6-6" />
+                                </svg>
+                            </span>
+                        </button>
+
+                        <ul class="hidden absolute z-10 mt-1 max-h-56 w-full overflow-auto border border-gray-600 rounded-md bg-gray-800 text-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 divide-y divide-solid divide-gray-700 focus:outline-none sm:text-sm"
+                            id="region-list" tabindex="-1" role="listbox" aria-labelledby="listbox-label"
+                            aria-activedescendant="listbox-option-3"></ul>
                     </div>
                 </div>
-                <div class="w-1/4">
-                    <label for="library" class="block text-sm font-medium text-gray-400 mb-1">Region</label>
-                    <div class="relative">
-                        <select
-                            class="w-full px-4 py-2 rounded border border-gray-600 bg-gray-800 text-white dropdown-item">
-                            <option value="" disabled selected>Loading AWS Regions...</option>
-                            <option value="us-east-1">us-east-1</option>
-                            <option value="us-west-2">us-west-2</option>
-                            <!-- Add more options as needed -->
-                        </select>
-                        <div class="loader absolute top-1/2 right-4 transform -translate-y-1/2" id="regionLoader"></div>
-                    </div>
-                </div>
-                <div class="w-1/4">
-                    <label for="library" class="block text-sm font-medium text-gray-400 mb-1">Library Name</label>
-                    <div class="relative">
-                        <select
-                            class="w-full px-4 py-2 rounded border border-gray-600 bg-gray-800 text-white dropdown-item">
-                            <option value="" disabled selected>Loading Library Name...</option>
-                            <option value="lodash">Lodash</option>
-                            <option value="axios">Axios</option>
-                            <!-- Add more options as needed -->
-                        </select>
-                        <div class="loader absolute top-1/2 right-4 transform -translate-y-1/2" id="libraryLoader">
-                        </div>
+                <div class="w-1/3">
+                    <label for="library" class="block text-sm font-medium text-gray-400 mb-1">
+                        Library
+                    </label>
+                    <div class="relative mt-2">
+                        <button type="button" onclick="toggleDropdownList(event)"
+                            disabled
+                            class="w-full px-4 py-2 rounded border border-gray-600 bg-gray-800 text-white dropdown-item focus:outline-none focus:ring-2 focus:ring-blue-400 sm:text-sm sm:leading-6"
+                            aria-haspopup="listbox" aria-expanded="true" aria-labelledby="listbox-label"
+                            data-dropdown="library-list">
+                            <span class="flex items-center">
+                                <span class="block truncate">Select Library</span>
+                            </span>
+                            <span class="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="lucide lucide-chevron-down">
+                                    <path d="m6 9 6 6 6-6" />
+                                </svg>
+                            </span>
+                        </button>
+
+                        <ul class="hidden absolute z-10 mt-1 max-h-56 w-full overflow-auto border border-gray-600 rounded-md bg-gray-800 text-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 divide-y divide-solid divide-gray-700 focus:outline-none sm:text-sm"
+                            id="library-list" tabindex="-1" role="listbox" aria-labelledby="listbox-label"
+                            aria-activedescendant="listbox-option-3"></ul>
                     </div>
                 </div>
                 <div class="mt-4 flex justify-between items-center">
                     <button onclick="getArn()" id="getArn" type="button"
-                        class="btn-arn mt-2 px-3 py-2 rounded transition duration-300"><svg
-                            xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        class="btn-arn mt-2 px-3 py-2 rounded transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="lucide lucide-send-horizontal">
-                            <path d="m3 3 3 9-3 9 19-9Z" />
-                            <path d="M6 12h16" />
-                        </svg></button>
+                            class="lucide lucide-search">
+                            <circle cx="11" cy="11" r="8" />
+                            <path d="m21 21-4.3-4.3" />
+                        </svg>
+                    </button>
                 </div>
             </div>
-            <div class="mt-6 bg-gray-800 px-5 py-3 rounded flex items-center justify-between">
+            <div class="mt-6 bg-gray-800 px-5 py-3 rounded flex items-center justify-between" disabled>
                 <span id="arnText" class="text-white text-x font-bold">AWS ARN:
                     arn:aws:lambda:us-east-1:123456789012:function:my-function</span>
                 <button id="copyBtn" onclick="copyArn()" type="button"
@@ -101,27 +128,7 @@
             </div>
         </div>
     </div>
-    <script defer>
-        function copyArn() {
-            const arnText = document.getElementById('arnText').innerText;
-            const copyBtn = document.getElementById('copyBtn');
-
-            navigator.clipboard.writeText(arnText).then(function () {
-                copyBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00ff62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-check"><path d="M18 6 7 17l-5-5"/><path d="m22 10-7.5 7.5L13 16"/></svg>';
-                setTimeout(() => {
-                    copyBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>';
-                }, 3000);
-            });
-        }
-
-        function getArn() {
-            const getArnBtn = document.getElementById('getArn');
-            getArnBtn.innerHTML = '<svg class="rotate-svg" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-loader"><line x1="12" x2="12" y1="2" y2="6"/><line x1="12" x2="12" y1="18" y2="22"/><line x1="4.93" x2="7.76" y1="4.93" y2="7.76"/><line x1="16.24" x2="19.07" y1="16.24" y2="19.07"/><line x1="2" x2="6" y1="12" y2="12"/><line x1="18" x2="22" y1="12" y2="12"/><line x1="4.93" x2="7.76" y1="19.07" y2="16.24"/><line x1="16.24" x2="19.07" y1="7.76" y2="4.93"/></svg>';
-            setTimeout(() => {
-                getArnBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send-horizontal"><path d="m3 3 3 9-3 9 19-9Z"/><path d="M6 12h16"/></svg>';
-            }, 3000);
-        }
-    </script>
+    <script defer src="./index.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "label":"Python 3.10",
+        "value":"Python 3.10"
+    },
+    {
+        "id": 2,
+        "label":"Python 3.11",
+        "value":"Python 3.11"
+    },
+    {
+        "id": 3,
+        "label":"Python 3.12",
+        "value":"Python 3.12"
+    },
+    {
+        "id":4,
+        "label":"Python 3.10-arm64",
+        "value":"Python 3.10-arm64"
+    },
+    {
+        "id": 5,
+        "label":"Python 3.11-arm64",
+        "value":"Python 3.11-arm64"
+    },
+    {
+        "id": 6,
+        "label":"Python 3.12-arm64",
+        "value":"Python 3.12-arm64"
+    }
+]
